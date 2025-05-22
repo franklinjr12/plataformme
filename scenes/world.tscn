@@ -1,11 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://prldw28bmhog"]
+[gd_scene load_steps=22 format=3 uid="uid://prldw28bmhog"]
 
 [ext_resource type="Script" uid="uid://bw8pveoqfojt3" path="res://scripts/player.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://b0x56r5hnk8is" path="res://sprites/main_character/Idle (32x32).png" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://bsfx7i4wvkudo" path="res://sprites/main_character/Fall (32x32).png" id="2_71j4m"]
 [ext_resource type="Texture2D" uid="uid://n3vslf1rsy6o" path="res://sprites/main_character/Jump (32x32).png" id="3_qfnet"]
 [ext_resource type="Texture2D" uid="uid://er50a4xgcay7" path="res://sprites/main_character/Run (32x32).png" id="4_i7141"]
-[ext_resource type="Texture2D" uid="uid://b2yb68e326wni" path="res://sprites/plataforms/Terrain (16x16).png" id="6_qfnet"]
+[ext_resource type="PackedScene" uid="uid://b5e5ikygwi3f0" path="res://scenes/platform.tscn" id="6_qfnet"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mrxx"]
 atlas = ExtResource("1_k0juu")
@@ -129,9 +129,6 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oo54l"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
-size = Vector2(1596, 8)
-
 [node name="World" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -146,22 +143,31 @@ metadata/_edit_lock_ = true
 shape = SubResource("CapsuleShape2D_oo54l")
 metadata/_edit_lock_ = true
 
-[node name="Timer" type="Timer" parent="Player"]
-wait_time = 3.0
+[node name="IsJumpingOnTimer" type="Timer" parent="Player"]
+wait_time = 2.0
 autostart = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Platform" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(591, 644)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_i7141")
-metadata/_edit_lock_ = true
+[node name="Platform2" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(281, 530)
+scale = Vector2(0.2, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(100, 1)
-texture = ExtResource("6_qfnet")
-region_enabled = true
-region_rect = Rect2(16.5, 0.5, 16, 8)
-metadata/_edit_lock_ = true
+[node name="Platform3" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(626, 417)
+scale = Vector2(0.04, 1)
 
-[connection signal="timeout" from="Player/Timer" to="Player" method="_on_timer_timeout"]
+[node name="Platform4" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(828, 275)
+scale = Vector2(0.04, 1)
+
+[node name="Platform5" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(682, 147)
+scale = Vector2(0.04, 1)
+
+[node name="Platform6" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(464, 47)
+scale = Vector2(0.04, 1)
+
+[connection signal="timeout" from="Player/IsJumpingOnTimer" to="Player" method="_on_is_jumping_on_timer_timeout"]

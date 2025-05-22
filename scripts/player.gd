@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var DEFAULT_VELOCITY = 10000.0
-@export var FALL_MULTIPLIER = 5
-@export var JUMP_VELOCITY = 9000
+@export var FALL_MULTIPLIER = 7
+@export var JUMP_VELOCITY = 12000
 
 var is_jumping = true
 

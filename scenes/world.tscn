@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://prldw28bmhog"]
+[gd_scene load_steps=25 format=3 uid="uid://prldw28bmhog"]
 
 [ext_resource type="Script" uid="uid://cp7fsg2uo0o7e" path="res://scripts/world.gd" id="1_4mrxx"]
 [ext_resource type="Script" uid="uid://bw8pveoqfojt3" path="res://scripts/player.gd" id="1_71j4m"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://er50a4xgcay7" path="res://sprites/main_character/Run (32x32).png" id="4_i7141"]
 [ext_resource type="PackedScene" uid="uid://b5e5ikygwi3f0" path="res://scenes/platform.tscn" id="6_qfnet"]
 [ext_resource type="Script" uid="uid://bsxciyr46e4h5" path="res://scripts/camera.gd" id="7_i7141"]
+[ext_resource type="Texture2D" uid="uid://dqmopup6utx47" path="res://sprites/scenario/pixel_art_tree_forest.png" id="9_7r4gi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4mrxx"]
 atlas = ExtResource("1_k0juu")
@@ -168,5 +169,11 @@ offset_top = -324.0
 offset_right = -522.0
 offset_bottom = -301.0
 text = "Score 0"
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+z_index = -1
+position = Vector2(-1.00005, 3.17)
+scale = Vector2(1.12305, 1)
+texture = ExtResource("9_7r4gi")
 
 [connection signal="timeout" from="Player/IsJumpingOnTimer" to="Player" method="_on_is_jumping_on_timer_timeout"]

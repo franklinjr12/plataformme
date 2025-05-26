@@ -11,8 +11,8 @@ var last_platform_num = 1
 
 const platform = preload("res://scenes/platform.tscn")
 const platform_str = "Platform"
-const platform_spawn_dist = 100
-const platform_x_spawn_dist = 100
+const platform_spawn_dist = 500
+const platform_x_spawn_dist = 200
 const platform_y_spawn_dist = 100
 
 func _ready() -> void:
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		var signal_mult = 1
 		if randi() % 2 == 0:
 			signal_mult = -1
-		new_platform.position.x = last_platform.position.x + signal_mult * platform_x_spawn_dist
+		new_platform.position.x = last_platform.position.x + signal_mult * (platform_x_spawn_dist/2 + randi() % platform_x_spawn_dist /2)
 		signal_mult = -1
 		new_platform.position.y = last_platform.position.y + signal_mult * platform_y_spawn_dist
 		add_child(new_platform)

@@ -135,7 +135,7 @@ animations = [{
 script = ExtResource("1_4mrxx")
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(282, 491)
+position = Vector2(581, 359)
 script = ExtResource("1_71j4m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
@@ -154,24 +154,8 @@ autostart = true
 position = Vector2(591, 644)
 scale = Vector2(0.8, 1)
 
-[node name="Platform2" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(281, 530)
-scale = Vector2(0.2, 1)
-
-[node name="Platform3" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(626, 417)
-scale = Vector2(0.04, 1)
-
-[node name="Platform4" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(828, 275)
-scale = Vector2(0.04, 1)
-
-[node name="Platform5" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(682, 147)
-scale = Vector2(0.04, 1)
-
-[node name="Platform6" parent="." instance=ExtResource("6_qfnet")]
-position = Vector2(464, 47)
+[node name="Platform1" parent="." instance=ExtResource("6_qfnet")]
+position = Vector2(582, 395)
 scale = Vector2(0.04, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]

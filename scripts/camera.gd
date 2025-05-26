@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var CAMERA_SCROLL_SPEED = 0.15
+@export var CAMERA_SCROLL_SPEED = 0.3
 var player = null
 
 func _ready():

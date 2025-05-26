@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var FALL_MULTIPLIER = 7
 @export var JUMP_VELOCITY = 12000
 
-var is_jumping = true
+var is_jumping = false
 
 func _ready() -> void:
 	$AnimatedSprite2D.animation = "default"
@@ -15,6 +15,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x += DEFAULT_VELOCITY * delta
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= DEFAULT_VELOCITY * delta
+	if Input.is_action_pressed("jump") && is_on_floor():
+		is_jumping = true
+		$IsJumpingOnTimer.start()
+	if Input.is_action_just_released("jump"):
+		is_jumping = false
+		$IsJumpingOnTimer.stop()
 	if is_jumping:
 		velocity.y -= JUMP_VELOCITY * delta
 	velocity.y +=  (FALL_MULTIPLIER * get_gravity().y) * delta
@@ -30,7 +36,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_is_jumping_on_timer_timeout() -> void:
-	if is_jumping == false && is_on_floor():
-		is_jumping = true
-	else:
-		is_jumping = false
+	is_jumping = false

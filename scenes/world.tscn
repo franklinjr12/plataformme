@@ -148,7 +148,7 @@ metadata/_edit_lock_ = true
 
 [node name="IsJumpingOnTimer" type="Timer" parent="Player"]
 wait_time = 2.0
-autostart = true
+one_shot = true
 
 [node name="InitialPlatform" parent="." instance=ExtResource("6_qfnet")]
 position = Vector2(591, 644)

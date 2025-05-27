@@ -1,5 +1,7 @@
 extends Node2D
 
+signal player_death
+
 var score = 0
 var current_player_y = 0
 var initial_player_y = 0
@@ -27,7 +29,8 @@ func _process(delta: float) -> void:
 	var new_y = player.position.y
 	var view_y_end = view_y + camera.position.y
 	if new_y > view_y_end:
-		print("game over")
+		#$Camera2D/GameOverLabel.visible = true
+		player_death.emit()
 	if new_y < current_player_y:
 		current_player_y = new_y
 		score = -roundi(current_player_y - initial_player_y)
@@ -47,3 +50,10 @@ func _process(delta: float) -> void:
 
 func last_platform_name() -> String:
 	return platform_str + str(last_platform_num)
+
+func _on_platform_cleaner_timer_timeout() -> void:
+	var view_y_end = view_y + camera.position.y
+	var platforms = get_tree().get_nodes_in_group("platforms")
+	for p in platforms:
+		if p.position.y > view_y_end:
+			p.queue_free()

@@ -15,6 +15,14 @@ run/main_scene="uid://prldw28bmhog"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/stretch/aspect="expand"
+
+[global_group]
+
+platforms=""
+
 [input]
 
 move_right={
